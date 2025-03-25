@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "ed375648-beb3-4ba6-b1d4-28c653dea4b4",
+		"name": "Bookstore",
+		"description": "Lightweight APIs for implementing Go dependency injection patterns, simulating real-world API behavior.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22427404"
+	},
+	"item": [
+		{
+			"name": "Create book with inventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"isbn\": \"978-3-16-148410-0\",\n  \"title\": \"The Go Programming Language\",\n  \"author\": \"Alan A. A. Donovan, Brian W. Kernighan\",\n  \"genre\": \"Programming\",\n  \"inventory\": {\n    \"quantity\": 200\n  },\n  \"published_at\": \"2015-10-26T00:00:00Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{Server adress}}/books",
+					"protocol": "http",
+					"host": [
+						"{{Server adress}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book with inventory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{Server adress}}/books/{{ID}}",
+					"protocol": "http",
+					"host": [
+						"{{Server adress}}"
+					],
+					"path": [
+						"books",
+						"{{ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Server adress",
+			"value": "localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "ID",
+			"value": "1",
+			"type": "default"
+		}
+	]
+}

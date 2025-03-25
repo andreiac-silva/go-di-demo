@@ -6,16 +6,16 @@ import (
 )
 
 type Book struct {
-	ID          int64     `json:"id"`
-	ISBN        string    `json:"isbn"`
-	Title       string    `json:"title"`
-	Author      string    `json:"author"`
-	Genre       string    `json:"genre"`
-	Inventory   Inventory `json:"inventory"`
-	PublishedAt time.Time `json:"published_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
-	CreatedAt   time.Time `json:"created_at"`
-	DeletedAt   time.Time `json:"deleted_at"`
+	ID          int64      `json:"id"`
+	ISBN        string     `json:"isbn"`
+	Title       string     `json:"title"`
+	Author      string     `json:"author"`
+	Genre       string     `json:"genre"`
+	Inventory   Inventory  `json:"inventory"`
+	PublishedAt time.Time  `json:"published_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
+	CreatedAt   time.Time  `json:"created_at"`
+	DeletedAt   *time.Time `json:"deleted_at,omitempty"`
 }
 
 type BookRepository interface {

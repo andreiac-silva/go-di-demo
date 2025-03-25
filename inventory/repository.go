@@ -32,13 +32,12 @@ func (r repository) Get(ctx context.Context, id int64) (domain.Inventory, error)
 	var inventory domain.Inventory
 
 	err := r.db.QueryRow(ctx, `
-		SELECT i.id, i.book_id, i.quantity, i.created_at, i.updated_at
+		SELECT i.id, i.quantity, i.created_at, i.updated_at
 		FROM inventories i 
 		WHERE id = $1 
 		AND i.deleted_at IS NULL
 	`, id).Scan(
 		&inventory.ID,
-		&inventory.BookID,
 		&inventory.Quantity,
 		&inventory.CreatedAt,
 		&inventory.UpdatedAt,

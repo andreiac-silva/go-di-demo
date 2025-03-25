@@ -10,6 +10,10 @@ type service struct {
 	repository domain.InventoryRepository
 }
 
+func NewService(repository domain.InventoryRepository) *service {
+	return &service{repository: repository}
+}
+
 func (s service) Save(ctx context.Context, inventory domain.Inventory) (int64, error) {
 	return s.repository.Save(ctx, inventory)
 }

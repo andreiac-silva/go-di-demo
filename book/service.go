@@ -12,6 +12,13 @@ type service struct {
 	inventoryService domain.InventoryService
 }
 
+func NewService(repository domain.BookRepository, inventoryService domain.InventoryService) *service {
+	return &service{
+		repository:       repository,
+		inventoryService: inventoryService,
+	}
+}
+
 func (s service) Save(ctx context.Context, book domain.Book) (int64, error) {
 	// Whoops! No transaction wrapping here - bold move! 😆
 	// But hey, let's not get sidetracked. The real star of the show is dependency injection!
