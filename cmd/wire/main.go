@@ -8,21 +8,23 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 func main() {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
 	server, err := InitApplication(ctx)
 	if err != nil {
 		log.Fatalf("failed to initialize application: %v", err)
 	}
 
-	log.Printf("starting server on '%s'", server.Addr)
+	log.Printf("starting server at '%s'", server.Addr)
 
 	go func() {
 		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
-			log.Fatalf("server error: %v", err)
+			log.Fatalf("error on starting server: %v", err)
 		}
 	}()
 

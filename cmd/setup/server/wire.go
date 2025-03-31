@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func NewHTTPServer(routerContainer *api.RouterContainer) *http.Server {
+func NewHTTPServerForWire(routerContainer *api.RouterContainer) *http.Server {
 	r := gin.Default()
 
 	for _, handler := range routerContainer.Routers() {

@@ -8,11 +8,11 @@ package main
 
 import (
 	"context"
+	"github.com/andreiac-silva/go-di-demo/api"
+	"github.com/andreiac-silva/go-di-demo/book"
 	"github.com/andreiac-silva/go-di-demo/cmd/setup"
 	"github.com/andreiac-silva/go-di-demo/cmd/setup/database"
 	"github.com/andreiac-silva/go-di-demo/cmd/setup/server"
-	"github.com/andreiac-silva/go-di-demo/api"
-	"github.com/andreiac-silva/go-di-demo/book"
 	"github.com/andreiac-silva/go-di-demo/inventory"
 	"github.com/google/wire"
 	"net/http"
@@ -32,7 +32,7 @@ func InitApplication(ctx context.Context) (*http.Server, error) {
 	bookService := book.NewService(repository, service)
 	handler := book.NewHandler(bookService)
 	routerContainer := api.NewRouterContainer(handler)
-	httpServer := server.NewHTTPServer(routerContainer)
+	httpServer := server.NewHTTPServerForWire(routerContainer)
 	return httpServer, nil
 }
 
@@ -42,4 +42,4 @@ var (
 
 // wire.go:
 
-var Container = wire.NewSet(setup.Provider, book.Provider, inventory.Provider, api.Provider)
+var Container = wire.NewSet(book.Provider, inventory.Provider, api.Provider, setup.Provider)

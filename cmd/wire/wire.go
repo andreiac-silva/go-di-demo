@@ -16,10 +16,10 @@ import (
 )
 
 var Container = wire.NewSet(
-	setup.Provider,
 	book.Provider,
 	inventory.Provider,
 	api.Provider,
+	setup.Provider,
 )
 
 func InitApplication(ctx context.Context) (*http.Server, error) {

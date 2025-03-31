@@ -10,6 +10,6 @@ import (
 )
 
 func NewPgConn(ctx context.Context, tenant string) (*pgx.Conn, error) {
-	log.Printf("it is only to simulate wire.Value. parameter: '%s'", tenant)
+	log.Printf("it is only to simulate processing a string parameter: '%s'", tenant)
 	return pgx.Connect(ctx, env.PostgresDSN)
 }

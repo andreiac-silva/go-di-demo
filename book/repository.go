@@ -2,7 +2,6 @@ package book
 
 import (
 	"context"
-
 	"github.com/andreiac-silva/go-di-demo/domain"
 
 	"github.com/jackc/pgx/v5"
