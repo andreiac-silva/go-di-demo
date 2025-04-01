@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func NewHTTPServer(routers []api.Router) *http.Server {
+func NewHTTPServer(routers ...api.Router) *http.Server {
 	r := gin.New()
 
 	for _, handler := range routers {
