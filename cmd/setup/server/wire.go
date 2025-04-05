@@ -11,9 +11,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// https://github.com/google/wire/issues/207
+
 type RouterContainer struct {
 	bookHandler api.Router
-	// Remaining handlers here...
+	// Remaining handlers here or a slice of routers...
 }
 
 func (r *RouterContainer) Routers() []api.Router {

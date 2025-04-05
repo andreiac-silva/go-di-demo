@@ -1,4 +1,4 @@
-## Golang Dependency Injection Libraries Demo
+## Go dependency injection demo
 
 This repository demonstrates how to implement dependency injection in Go using both manual methods and the following libraries:
 

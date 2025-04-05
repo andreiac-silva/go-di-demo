@@ -19,9 +19,9 @@ import (
 
 // Injectors from wire.go:
 
-func InitApplication(ctx context.Context) (*http.Server, error) {
+func InitApplication(contextContext context.Context) (*http.Server, error) {
 	string2 := _wireStringValue
-	conn, err := database.NewPgConn(ctx, string2)
+	conn, err := database.NewPgConn(contextContext, string2)
 	if err != nil {
 		return nil, err
 	}

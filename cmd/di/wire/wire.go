@@ -20,7 +20,7 @@ var Container = wire.NewSet(
 	setup.Provider,
 )
 
-func InitApplication(ctx context.Context) (*http.Server, error) {
+func InitApplication(_ context.Context) (*http.Server, error) {
 	wire.Build(Container)
 	return nil, nil
 }
