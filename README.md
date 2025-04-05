@@ -31,10 +31,3 @@ go run main.go
 #### 3. Test the API
 
 Use the provided [Postman collection](https://github.com/andreiac-silva/go-di-demo/blob/main/docs/bookstore_api.json) to test the API endpoints.
-
----
-
-### 📌 Notes
-
-- This project is intended for educational purposes and does not include production-ready features like graceful shutdowns or advanced logging.
-- Contributions and suggestions are welcome!
