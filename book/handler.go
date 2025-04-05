@@ -43,7 +43,7 @@ func (h Handler) get(c *gin.Context) {
 	idStr := c.Params.ByName("id")
 	id, err := strconv.ParseInt(idStr, 10, 64)
 	if err != nil {
-		fmt.Println("Error:", err)
+		_ = c.Error(fmt.Errorf("failed parse book id: %w", err))
 		return
 	}
 

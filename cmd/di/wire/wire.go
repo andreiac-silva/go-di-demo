@@ -7,7 +7,6 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/andreiac-silva/go-di-demo/api"
 	"github.com/andreiac-silva/go-di-demo/book"
 	"github.com/andreiac-silva/go-di-demo/cmd/setup"
 	"github.com/andreiac-silva/go-di-demo/inventory"
@@ -18,7 +17,6 @@ import (
 var Container = wire.NewSet(
 	book.Provider,
 	inventory.Provider,
-	api.Provider,
 	setup.Provider,
 )
 

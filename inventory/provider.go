@@ -4,6 +4,7 @@ import (
 	"github.com/andreiac-silva/go-di-demo/domain"
 
 	"github.com/google/wire"
+	"go.uber.org/dig"
 	"go.uber.org/fx"
 )
 
@@ -22,3 +23,11 @@ var Module = fx.Module("inventory",
 		fx.Annotate(NewService, fx.As(new(domain.InventoryService))),
 	),
 )
+
+// Provide is a function that provides the inventory module to the dig container.
+func Provide(container *dig.Container) error {
+	if err := container.Provide(NewRepository, dig.As(new(domain.InventoryRepository))); err != nil {
+		return err
+	}
+	return container.Provide(NewService, dig.As(new(domain.InventoryService)))
+}

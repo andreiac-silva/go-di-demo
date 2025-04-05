@@ -5,12 +5,26 @@ import (
 	"time"
 
 	"github.com/andreiac-silva/go-di-demo/api"
+	"github.com/andreiac-silva/go-di-demo/book"
 	"github.com/andreiac-silva/go-di-demo/cmd/setup/env"
 
 	"github.com/gin-gonic/gin"
 )
 
-func NewHTTPServerForWire(routerContainer *api.RouterContainer) *http.Server {
+type RouterContainer struct {
+	bookHandler api.Router
+	// Remaining handlers here...
+}
+
+func (r *RouterContainer) Routers() []api.Router {
+	return []api.Router{r.bookHandler}
+}
+
+func NewRouterContainer(bookHandler *book.Handler) *RouterContainer {
+	return &RouterContainer{bookHandler: bookHandler}
+}
+
+func NewHTTPServerForWire(routerContainer *RouterContainer) *http.Server {
 	r := gin.Default()
 
 	for _, handler := range routerContainer.Routers() {
